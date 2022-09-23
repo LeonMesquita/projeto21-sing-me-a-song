@@ -85,7 +85,7 @@ GET /recommendations/:id
 
 
 ```yml
-GET /recommendations/:id
+GET /recommendations/random
     - Rota que retorna uma recomendação aleatória
     - headers: {}
     - body: {}
