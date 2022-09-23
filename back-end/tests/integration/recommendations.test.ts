@@ -94,6 +94,11 @@ describe('Test get recommendations routes', () => {
         expect(response.status).not.toBeFalsy();
     });
 
+    it('Must return status 404 if was not found any random recommendation', async () => {
+        const response = await supertest(app).get(`/recommendations/random`);
+        expect(response.status).toBe(404);
+    });
+
 
     it('Must return status 200 if the top score recommendations was returned correctly', async () => {
         const recommendation = await recommendationFactory();

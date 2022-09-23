@@ -1,6 +1,138 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1663884352860" clover="3.2.0">
-  <project timestamp="1663884352860" name="All files">
-    <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0" elements="0" coveredelements="0" complexity="0" loc="0" ncloc="0" packages="0" files="0" classes="0"/>
+<coverage generated="1663896741345" clover="3.2.0">
+  <project timestamp="1663896741345" name="All files">
+    <metrics statements="93" coveredstatements="89" conditionals="8" coveredconditionals="5" methods="17" coveredmethods="17" elements="118" coveredelements="111" complexity="0" loc="93" ncloc="93" packages="6" files="7" classes="7"/>
+    <package name="src">
+      <metrics statements="14" coveredstatements="14" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="app.ts" path="/home/leonardo/Desktop/driven/Arquitetura/sing-me-a-song/back-end/src/app.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+      <file name="database.ts" path="/home/leonardo/Desktop/driven/Arquitetura/sing-me-a-song/back-end/src/database.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.controllers">
+      <metrics statements="25" coveredstatements="24" conditionals="1" coveredconditionals="0" methods="7" coveredmethods="7"/>
+      <file name="recommendationController.ts" path="/home/leonardo/Desktop/driven/Arquitetura/sing-me-a-song/back-end/src/controllers/recommendationController.ts">
+        <metrics statements="25" coveredstatements="24" conditionals="1" coveredconditionals="0" methods="7" coveredmethods="7"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="7" count="18" type="stmt"/>
+        <line num="8" count="18" type="cond" truecount="0" falsecount="1"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="18" type="stmt"/>
+        <line num="14" count="17" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="2" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="34" count="2" type="stmt"/>
+        <line num="36" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="45" count="1" type="stmt"/>
+        <line num="47" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="52" count="2" type="stmt"/>
+        <line num="54" count="2" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="58" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.middlewares">
+      <metrics statements="6" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+      <file name="errorHandlerMiddleware.ts" path="/home/leonardo/Desktop/driven/Arquitetura/sing-me-a-song/back-end/src/middlewares/errorHandlerMiddleware.ts">
+        <metrics statements="6" coveredstatements="5" conditionals="1" coveredconditionals="1" methods="1" coveredmethods="1"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="16" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.routers">
+      <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="recommendationRouter.ts" path="/home/leonardo/Desktop/driven/Arquitetura/sing-me-a-song/back-end/src/routers/recommendationRouter.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.schemas">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="recommendationsSchemas.ts" path="/home/leonardo/Desktop/driven/Arquitetura/sing-me-a-song/back-end/src/schemas/recommendationsSchemas.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="4" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.services">
+      <metrics statements="34" coveredstatements="32" conditionals="6" coveredconditionals="4" methods="9" coveredmethods="9"/>
+      <file name="recommendationsService.ts" path="/home/leonardo/Desktop/driven/Arquitetura/sing-me-a-song/back-end/src/services/recommendationsService.ts">
+        <metrics statements="34" coveredstatements="32" conditionals="6" coveredconditionals="4" methods="9" coveredmethods="9"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="8" count="18" type="stmt"/>
+        <line num="11" count="18" type="cond" truecount="1" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="17" type="stmt"/>
+        <line num="15" count="17" type="stmt"/>
+        <line num="16" count="17" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="36" count="1" type="cond" truecount="0" falsecount="1"/>
+        <line num="37" count="0" type="stmt"/>
+        <line num="42" count="5" type="stmt"/>
+        <line num="43" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="60" count="2" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="64" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="65" count="1" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+        <line num="69" count="1" type="stmt"/>
+        <line num="77" count="2" type="stmt"/>
+        <line num="82" count="2" type="cond" truecount="0" falsecount="1"/>
+        <line num="83" count="0" type="stmt"/>
+        <line num="86" count="2" type="stmt"/>
+        <line num="90" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="91" count="1" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="97" count="1" type="stmt"/>
+      </file>
+    </package>
   </project>
 </coverage>

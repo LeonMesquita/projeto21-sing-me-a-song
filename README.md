@@ -1,7 +1,8 @@
-# <p align = "center"> Projeto X </p>
+# <p align = "center"> Projeto 21 - Sing Me a Song </p>
 
-<p align="center">
-   <img src="https://user-images.githubusercontent.com/72531277/178094665-f46c6a55-c821-42a0-bb9c-d5dd5f2d69fa.png"/>
+<p align="center" >
+   <img src="https://notion-emojis.s3-us-west-2.amazonaws.com/prod/svg-twitter/1f399-fe0f.svg" height="200"/>
+   
 </p>
 
 <p align = "center">
@@ -19,66 +20,104 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla urna massa, molli
 ## :computer:	 Tecnologias e Conceitos
 
 - REST APIs
-- JWTs & refresh tokens
 - Node.js
 - TypeScript
-- MongoDB with Mongoose
+- Postgresql with Prisma
+- Jest and Supertest
 
 ***
 
 ## :rocket: Rotas
 
 ```yml
-POST /cadastro
-    - Rota para cadastrar um novo usuário
+POST /recommendations
+    - Rota para adicionar uma nova recomendação
     - headers: {}
     - body:{
-        "nome": "Lorem ipsum",
-        "email": "lorem@gmail.com",
-        "senha": "loremipsum"
-}
-```
-    
-```yml 
-POST /login
-    - Rota para fazer login
-    - headers: {}
-    - body: {
-    "email": "lorem@gmail.com",
-    "senha": "loremipsum"
+        "name": "Lorem ipsum",
+        "youtubeLink": "https://www.youtube.com/watch?v=jtNrx1c3Xh8"
     }
 ```
     
+
+    
 ```yml 
-GET /usuarios (autenticada)
-    - Rota para listar todos os usuários
-    - headers: { "Authorization": "Bearer $token" }
+POST /recommendations/:id/upvote
+    - Rota para adicionar uma pontuação a uma recomendação
+    - headers: {}
     - body: {}
 ```
-
-```yml
-GET /usuarios/:id (autenticada)
-    - Rota para listar um usuário pelo id
-    - headers: { "Authorization": "Bearer $token" }
+```yml 
+POST /recommendations/:id/downvote
+    - Rota para remover uma pontuação a uma recomendação
+    - headers: {}
     - body: {}
+```
+```yml
+GET /recommendations
+    - Rota que retorna as 10 últimas recomendações
+    - headers: {}
+    - body: {}
+    - A resposta tem o formato:
+        [
+            {
+                "id": 1,
+                "name": "Metallica - Disposable Heroes",
+                "youtubeLink": "https://www.youtube.com/watch?v=jtNrx1c3Xh8",
+                "score": 245
+            }
+        ]
 ``` 
 
 ```yml
-PUT /usuarios/:id (autenticada)
-    - Rota para atualizar um usuário pelo id
-    - headers: { "Authorization": "Bearer $token" }
-    - body: {
-        "nome": "Lorem ipsum2",
-        "email": "lorem2@gmail.com",
-        "senha": "loremipsum2"
-    }
-```
+GET /recommendations/:id
+    - Rota que retorna uma recomendação pelo seu ID
+    - headers: {}
+    - body: {}
+    - A resposta tem o formato:
+        {
+            "id": 1,
+            "name": "Metallica - Disposable Heroes",
+            "youtubeLink": "https://www.youtube.com/watch?v=jtNrx1c3Xh8",
+            "score": 245
+        }
+``` 
+
+
+```yml
+GET /recommendations/:id
+    - Rota que retorna uma recomendação aleatória
+    - headers: {}
+    - body: {}
+    - A resposta tem o formato:
+        {
+            "id": 1,
+            "name": "Metallica - Disposable Heroes",
+            "youtubeLink": "https://www.youtube.com/watch?v=jtNrx1c3Xh8",
+            "score": 245
+        }
+``` 
  
 ```yml
-DELETE /usuarios/:id (autenticada)
-    - Rota para deletar um usuário pelo id
-    - headers: { "Authorization": "Bearer $token" }
+GET /recommendations/top/:amount
+    - Rota que retorna as top X músicas (parâmetro :amount da rota) com maior número de pontos
+    - headers: {}
     - body: {}
+    - A resposta tem o formato:
+        [
+            {
+                "id": 1,
+                "name": "Metallica - Disposable Heroes",
+                "youtubeLink": "https://www.youtube.com/watch?v=jtNrx1c3Xh8",
+                "score": 245
+            },
+                        {
+                "id": 2,
+                "name": "Megadeth - Tornado of Souls",
+                "youtubeLink": "https://www.youtube.com/watch?v=L8HhOMNrulE",
+                "score": 112
+            }
+        ]
 ```
 ***
 
@@ -89,7 +128,7 @@ Este projeto foi inicializado com o [Create React App](https://github.com/facebo
 Primeiro, faça o clone desse repositório na sua maquina:
 
 ```
-git clone https://github.com/luanalessa/projeto-backend.git
+git clone https://github.com/LeonMesquita/projeto21-sing-me-a-song.git
 ```
 
 Depois, dentro da pasta, rode o seguinte comando para instalar as dependencias.
@@ -100,7 +139,5 @@ npm install
 
 Finalizado o processo, é só inicializar o servidor
 ```
-npm start
+npm run dev
 ```
-
-:stop_sign: Não esqueça de repetir os passos acima com o [repositório](https://github.com/luanalessa/projeto-frontend.git) que contem a interface da aplicação, para testar o projeto por completo.
