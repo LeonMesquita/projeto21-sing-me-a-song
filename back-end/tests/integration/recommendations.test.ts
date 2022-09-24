@@ -5,7 +5,7 @@ import app from '../../src/app';
 
 
 beforeEach(async () => {
-    await prisma.$executeRaw`TRUNCATE TABLE recommendations`;
+    await prisma.$executeRaw`TRUNCATE TABLE recommendations RESTART IDENTITY`;
 });
 
 
@@ -34,16 +34,20 @@ describe('Test posts recommendations routes', () => {
 
     it('Must return status 200 if the upvote is correct', async () => {
         const recommendation = await recommendationFactory();
-        const result = await supertest(app).post('/recommendations').send(recommendation);
-        const response = await supertest(app).post(`/recommendations/${result.body.id}/upvote`);
+        await supertest(app).post('/recommendations').send(recommendation);
+        const response = await supertest(app).post(`/recommendations/${1}/upvote`);
         expect(response.status).toBe(200);
     });
 
+    it('Must return status 404 if the recommendation was not found', async () => {
+        const response = await supertest(app).post(`/recommendations/${1}/upvote`);
+        expect(response.status).toBe(404);
+    });
 
     it('Must return status 200 if the downvote is correct', async () => {
         const recommendation = await recommendationFactory();
-        const result = await supertest(app).post('/recommendations').send(recommendation);
-        const response = await supertest(app).post(`/recommendations/${result.body.id}/downvote`);
+        await supertest(app).post('/recommendations').send(recommendation);
+        const response = await supertest(app).post(`/recommendations/${1}/downvote`);
         expect(response.status).toBe(200);
     });
 
@@ -72,8 +76,8 @@ describe('Test get recommendations routes', () => {
 
     it('Must return status 200 if the recommendation was returned correctly', async () => {
         const recommendation = await recommendationFactory();
-        const result = await supertest(app).post('/recommendations').send(recommendation);
-        const response = await supertest(app).get(`/recommendations/${result.body.id}`);
+        await supertest(app).post('/recommendations').send(recommendation);
+        const response = await supertest(app).get(`/recommendations/${1}`);
         expect(response.status).toBe(200);
         expect(response.status).not.toBeFalsy();
     });

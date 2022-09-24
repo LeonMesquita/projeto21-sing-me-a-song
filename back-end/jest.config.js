@@ -12,7 +12,11 @@ export default {
     '<rootDir>/src/server.ts',
     '<rootDir>/src/utils',
     '<rootDir>/src/config',
+    '<rootDir>/src/database.ts',
     '<rootDir>/tests/factories',
+    '<rootDir>/src/controllers',
+    '<rootDir>/src/middlewares',
+
   ],
   extensionsToTreatAsEsm: [".ts"],
   globals: {
