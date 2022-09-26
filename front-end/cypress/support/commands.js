@@ -10,7 +10,21 @@
 //
 //
 // -- This is a parent command --
-// Cypress.Commands.add('login', (email, password) => { ... })
+
+import {faker} from '@faker-js/faker';
+
+
+
+Cypress.Commands.add('createRecommendation', () => {
+
+    const youtubeLink = `https://www.youtube.com/${faker.random.alphaNumeric(10)}`
+    const recommendation = {
+        name: faker.lorem.words(10),
+        youtubeLink
+    }
+    cy.request('POST', 'http://localhost:5000/recommendations', recommendation);
+
+})
 //
 //
 // -- This is a child command --

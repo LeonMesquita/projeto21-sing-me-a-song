@@ -1,6 +1,8 @@
 import {faker} from '@faker-js/faker';
 
-
+beforeEach(async () => {
+  await cy.request('POST', 'http://localhost:5000/e2e/reset', {});
+})
 
 describe('empty spec', () => {
   it('passes', () => {
@@ -12,13 +14,7 @@ describe('empty spec', () => {
     cy.visit('http://localhost:3000');
     cy.get('#name').type(recommendation.name);
     cy.get('#link').type(recommendation.youtubeLink);
-
-    //cy.intercept("POST", "http://localhost/recommendations").as("createRecommendation");
     cy.get('[data-test-id="send"]').click();
-
-    // expect(cy.xhr).to.equal(201);
-
-   // cy.wait("@createRecommendation");
 
     
   })
