@@ -1,7 +1,9 @@
 import api from "./api";
 
 export async function list() {
+  //console.log(api)
   const response = await api.get("/recommendations");
+  console.log(response.data)
   return response.data;
 }
 

@@ -4,21 +4,17 @@ import {recommendationRepository} from '../../src/repositories/recommendationRep
 
 
 describe('Unit tests of post services', () => {
-    it('Tests if creation was succeeded', async () => {
+    it('The service must create a recommendation', async () => {
 
         const recommendation = await recommendationFactory();
 
         jest
             .spyOn(recommendationRepository, 'findByName')
-            .mockImplementationOnce(() : any => {
-
-            })
+            .mockImplementationOnce(() : any => {})
 
         jest
             .spyOn(recommendationRepository, 'create')
-            .mockImplementationOnce(() : any => {
-
-            });
+            .mockImplementationOnce(() : any => {});
 
         await recommendationService.insert(recommendation);
         expect(recommendationRepository.findByName).toBeCalled();
@@ -26,7 +22,7 @@ describe('Unit tests of post services', () => {
     });
 
 
-    it('Tests if the recommendation name is duplicated', async () => {
+    it('The service must throw an conflict error if the recommendation name is duplicated', async () => {
 
         const recommendation = await recommendationFactory();
 
@@ -43,7 +39,7 @@ describe('Unit tests of post services', () => {
         })
     });
 
-    it('Tests if the upvote service is correct', async () => {
+    it('The upvote service must insert a vote on the recommendation', async () => {
 
         const recommendation = await recommendationFactory();
 
@@ -62,15 +58,10 @@ describe('Unit tests of post services', () => {
         expect(recommendationRepository.updateScore).toBeCalled();
     });
 
-    it('Tests if the upvote service is incorrect', async () => {
-
-        const recommendation = await recommendationFactory();
-
+    it('The upvote service must throw a not found error if the recommendation was not found', async () => {
         jest
             .spyOn(recommendationRepository, 'find')
             .mockImplementationOnce(() : any => {});
-        
-
 
         const promise = recommendationService.upvote(1);
         expect(promise).rejects.toEqual({
@@ -81,7 +72,7 @@ describe('Unit tests of post services', () => {
     //
     //
     //
-    it('Tests if the downvote service is correct', async () => {
+    it('The downvote service must remove a vote on the recommendation', async () => {
 
         const recommendation = await recommendationFactory();
 
@@ -95,6 +86,7 @@ describe('Unit tests of post services', () => {
             .spyOn(recommendationRepository, 'updateScore')
             .mockImplementationOnce(() : any => {
                 return {
+                    ...recommendation,
                     score: 0
                 }
             });
@@ -106,7 +98,7 @@ describe('Unit tests of post services', () => {
 //
 //
 //
-it('Removes the recommendation if the score is under -5', async () => {
+it('The downvote service must remove the recommendation if the score is under -5', async () => {
 
     const recommendation = await recommendationFactory();
 
@@ -120,6 +112,7 @@ it('Removes the recommendation if the score is under -5', async () => {
         .spyOn(recommendationRepository, 'updateScore')
         .mockImplementationOnce(() : any => {
             return {
+                ...recommendation,
                 score: -6
             }
         });
@@ -133,16 +126,11 @@ it('Removes the recommendation if the score is under -5', async () => {
     expect(recommendationRepository.remove).toBeCalled();
 });
 
-    it('Throw error if the recommendation was not found', async () => {
-
-        const recommendation = await recommendationFactory();
-
+    it('The downvote service throw a not found error if the recommendation was not found', async () => {
         jest
             .spyOn(recommendationRepository, 'find')
             .mockImplementationOnce(() : any => {});
-        
-
-
+    
         const promise = recommendationService.downvote(1);
         expect(promise).rejects.toEqual({
             type: 'not_found',
@@ -172,21 +160,35 @@ describe('Unit tests of get services', () => {
     });
 
 
-    it('The service must return the recommendation by its id', async () => {
+    it('The service must return a recommendation by the id', async () => {
+        const recommendation = await recommendationFactory();
         jest
         .spyOn(recommendationRepository, 'find')
         .mockImplementationOnce(() : any => {
-            return {};
+            return recommendation;
         });
 
         const promise = await recommendationService.getById(1);
         expect(recommendationRepository.find).toBeCalled();
         expect(promise).not.toBeFalsy();
     });
-    it.todo('retorna erro se a recomendação não foi encontrada')
 
 
-    it('The service must return a random recommendation with score greater than 10', async () => {
+    it('The service throw a error if the id was not found', async () => {
+        jest
+        .spyOn(recommendationRepository, 'find')
+        .mockImplementationOnce(() : any => {});
+
+        const promise = recommendationService.getById(1);
+        expect(recommendationRepository.find).toBeCalled();
+        expect(promise).rejects.toEqual({
+            message: "",
+            type: "not_found",
+        })  
+    });
+
+
+    it('The getRandom service must return a random recommendation with score greater than 10', async () => {
         jest
         .spyOn(Math, 'random')
         .mockImplementationOnce(() : any => {
@@ -210,7 +212,7 @@ describe('Unit tests of get services', () => {
     });
     //
     //
-    it('The service must return a random recommendation with score between -5 and 10', async () => {
+    it('The getRandom service must return a random recommendation with score between -5 and 10', async () => {
         jest
         .spyOn(Math, 'random')
         .mockImplementationOnce(() : any => {
@@ -233,57 +235,30 @@ describe('Unit tests of get services', () => {
         expect(promise.score).toBeLessThan(10);
     
     });
+
     //
     //
-    // it('The service aaaaaaaa', async () => {
-    //     jest
-    //     .spyOn(recommendationService, 'getByScore')
-    //     .mockImplementationOnce(() : any => {
-    //         return []
-    //     });
-
-    //     // jest
-    //     // .spyOn(recommendationRepository, 'findAll')
-    //     // .mockImplementationOnce(() : any => {
-    //     //     return [
-    //     //     ];
-    //     // });
-
-
-
-    //     const promise = await recommendationService.getRandom();
-    //         expect(promise).rejects.toEqual({
-    //         type: 'not_found',
-    //         message: ''
-    //     })
-    
-    // });
-    //
-    //
-    it('The service must throw error if none recommendation was found', async () => {
+    it('The getRandom service must throw a not found error if none recommendation was found', async () => {
         jest
         .spyOn(recommendationRepository, 'findAll')
-        .mockImplementationOnce(() : any => {
+        .mockImplementation(() : any => {  
             return [];
         });
-        jest
-        .spyOn(recommendationService, 'getByScore')
-        .mockImplementationOnce(() : any => {
-            return []
-        });
+
         const promise =  recommendationService.getRandom();
+        
+       
         expect(recommendationRepository.findAll).toBeCalled();
-        //     expect(promise).rejects.toEqual({
-        //     type: 'not_found',
-        //     message: ''
-        // })    
+        expect(promise).rejects.toEqual({
+            message: "",
+            type: "not_found",
+        })    
     });
 
 
 
-
     
-    it('The service must return the X top score recommendations', async () => {
+    it('The getTop service must return the X top score recommendations', async () => {
         jest
         .spyOn(recommendationRepository, 'getAmountByScore')
         .mockImplementationOnce(() : any => {
@@ -293,11 +268,14 @@ describe('Unit tests of get services', () => {
                 },
                 {
                     score: 10
+                },
+                {
+                    score: 3
                 }
             ];
         });
 
-        const promise = await recommendationService.getTop(2);
+        const promise = await recommendationService.getTop(10);
         expect(recommendationRepository.getAmountByScore).toBeCalled();
         expect(promise).toBeInstanceOf(Array);
     });

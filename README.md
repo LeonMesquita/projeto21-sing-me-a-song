@@ -5,10 +5,7 @@
    
 </p>
 
-<p align = "center">
-   <img src="https://img.shields.io/badge/author-SEU_NOME-4dae71?style=flat-square" />
-   <img src="https://img.shields.io/github/languages/count/SEU_NOME/NOME_DO_PROJETO?color=4dae71&style=flat-square" />
-</p>
+
 
 
 ##  :clipboard: Descrição
@@ -140,4 +137,19 @@ npm install
 Finalizado o processo, é só inicializar o servidor
 ```
 npm run dev
+```
+***
+
+##  Rodando os testes
+
+Antes de rodar os testes, certifique-se de criar um segundo banco de dados para ser utilizado exclusivamente nos testes e colar sua URL em um arquivo chamado ".env.test".
+
+Rodando os testes de integração:
+```
+npm run test:integration
+```
+
+Rodando os testes unitários:
+```
+npm run test:unit
 ```
