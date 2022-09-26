@@ -3,8 +3,8 @@ beforeEach(async () => {
     await cy.request('POST', 'http://localhost:5000/e2e/reset', {});
   })
 
-describe('empty spec', () => {
-  it('passes', () => {
+describe('Test remove vote', () => {
+  it('Remove 1 vote from the recommendation', () => {
     cy.createRecommendation();      
 
     cy.visit('http://localhost:3000');

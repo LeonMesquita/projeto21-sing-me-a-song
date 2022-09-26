@@ -6,8 +6,8 @@ beforeEach(async () => {
 })
 
 
-describe('The recommendations list must have 10 or less items', () => {    
-    it('passes', () => {
+describe('Test get random', () => {    
+    it('The recommendations list must have 10 or less items', () => {
 
         cy.createRecommendation();       
         cy.visit('http://localhost:3000/random');
